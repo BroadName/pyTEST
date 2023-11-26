@@ -1,8 +1,11 @@
-n_list = list(map(int, input().split()))
-if len(n_list) % 2 != 0:
-    for i in range(1, len(n_list), 2):
-        n_list[i - 1], n_list[i] = n_list[i], n_list[i - 1]
-else:
-    for i in range(0, len(n_list), 2):
-        n_list[i], n_list[i + 1] = n_list[i + 1], n_list[i]
-print(n_list)
+def isss():
+    nums = [0,4,3,0]
+    target = 0
+    result =[]
+    for i in range(len(nums)):
+                for j in range(len(nums)):
+                    if nums[i] > target or i == j:
+                        continue
+                    elif (nums[i] + nums[j]) == target:
+                        return [i,j]
+print(isss())

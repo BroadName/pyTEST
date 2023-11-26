@@ -7,6 +7,24 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
 
+    def __gt__(self, other):
+        return self.avg() > other.avg()
+
+    def __lt__(self, other):
+        return self.avg() < other.avg()
+
+    def __ge__(self, other):
+        return self.avg() >= other.avg()
+
+    def __le__(self, other):
+        return self.avg() <= other.avg()
+
+    def __eq__(self, other):
+        return  self.avg() == other.avg()
+
+    def __ne__(self, other):
+        return self.avg() != other.avg()
+
     def rate_lecturer(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached and course in self.courses_in_progress:
             if course in lecturer.grades:
@@ -58,6 +76,24 @@ class Lecturer(Mentor):
 
     def __str__(self):
         return f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.avg()}"
+
+    def __gt__(self, other):
+        return self.avg() > other.avg()
+
+    def __lt__(self, other):
+        return self.avg() < other.avg()
+
+    def __ge__(self, other):
+        return self.avg() >= other.avg()
+
+    def __le__(self, other):
+        return self.avg() <= other.avg()
+
+    def __eq__(self, other):
+        return  self.avg() == other.avg()
+
+    def __ne__(self, other):
+        return self.avg() != other.avg()
 
 
 class Reviewer(Mentor):
@@ -131,9 +167,10 @@ def average_lecturer(list_lecturers, course):
     return sum_rates/count
 
 
+print(first_lecturer != second_lecturer)
+print(best_student == lazy_student)
 print(average_lecturer(l_lecturers, 'History'))
 print(average_stud(l_students, 'Python'))
-print(first_lecturer.avg() < best_student.avg())
 print(lazy_student.avg())
 print(first_lecturer.avg())
 print(best_student.__dict__)
