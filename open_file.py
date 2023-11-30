@@ -7,7 +7,6 @@ def reader_files(path_to_file):
         current_len = len(f.readlines())
         f.seek(0)
         list_data.append([current_len])
-        last_len = list_data[-1]
         list_data.append(f.read())
         return list_data
 
@@ -27,9 +26,10 @@ def folder_loop():
 
     sorted_list = sorted(first_part.items(), key=lambda x: x[1])
     for i in sorted_list:
-        print(i[0])
-        print(i[1])
-        print(second_part[i[0]])
+        with open('result.txt', 'a', encoding='utf-8') as result:
+            result.write(i[0]+'\n')
+            result.write(str(i[1])+'\n')
+            result.write(second_part[i[0]]+'\n')
 
 
 folder_loop()
